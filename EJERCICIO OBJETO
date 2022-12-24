@@ -1,4 +1,4 @@
-////EJERCICIO 1
+//EJERCICIO 1
 
 public class MyClass {
     
@@ -16,7 +16,7 @@ public class MyClass {
     
 }
 
-////
+//EJERCICIO 2
 
 public class MyClass {
 
@@ -34,4 +34,4 @@ class Coche {
         this.puertas++;
     }
 }
-////
+
