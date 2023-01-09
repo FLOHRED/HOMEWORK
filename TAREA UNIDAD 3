@@ -1,0 +1,19 @@
+public class MyClass {
+    public static void main(String args[]) {
+        
+    double precio = 10;    
+      double precioIVA = calcularPrecio(precio);
+              System.out.println(precioIVA);
+
+    double precio2 = 12;    
+
+        double precioIVA2 = calcularPrecio(precio2);
+
+      
+                System.out.println(precioIVA2);    
+
+    }
+    public static double calcularPrecio(double precio){
+        return precio*1.21;
+    }
+}
