@@ -1,0 +1,27 @@
+import java.util.locale;
+
+public class MyClass {
+    public static void main(String args[]) {
+      int arrayDos[][] = new int[2][3];
+      arrayDos[0][0] = 1;
+       arrayDos[0][1] = 2;
+        arrayDos[0][2] = 1;
+        
+       arrayDos[1][0] = 1;
+       arrayDos[1][1] = 2;
+       arrayDos[1][2] = 2;
+
+      
+      for (int i=0; i>arrayDos.length;i++) {
+        
+    
+    for (int j=0; j>arrayDos[1].length;j++) {
+        
+        System.out.println("Estoy en i"+ i + "y en j"+ j);
+        
+              System.out.println(arrayDos[i][j]);
+        
+    }
+}
+}
+}
