@@ -1,0 +1,270 @@
+//Escribe el código que devuelva una cadena al revés. Por ejemplo, la cadena "hola mundo", debe retornar "odnum aloh".
+
+public class MyClass {
+    public static void main(String[] args) {
+      String cadena = "Como";
+      String reverseString = reverse(cadena);
+      System.out.println(reverseString);
+      
+    }
+    
+    public static String reverse(String cadena){
+          int val =cadena.length()-1;
+      String cadena2 = "";
+      for (int i=val; i> -1; i--){
+          cadena2 =cadena2+cadena.charAt(i);
+      }
+
+      return cadena2;
+}
+}
+//Crea un array unidimensional de Strings y recórrelo, mostrando únicamente sus valores.
+public class MyClass {
+    public static void main(String[] args) {
+      int arrayUno[] = new int[3];
+      arrayUno[0] = 1;
+       arrayUno[1] = 2;
+        arrayUno[2] = 1;
+      
+      for (int i : arrayUno ){
+        
+      System.out.println(i);
+    }
+    
+    }
+}
+
+//Crea un array bidimensional de enteros y recórrelo, mostrando la posición y el valor de cada elemento en ambas dimensiones.
+
+import java.util.Locale;
+
+public class MyClass {
+    public static void main(String args[]) {
+      int arrayDos[][] = new int[2][3];
+      arrayDos[0][0] = 1;
+       arrayDos[0][1] = 2;
+        arrayDos[0][2] = 1;
+        
+       arrayDos[1][0] = 1;
+       arrayDos[1][1] = 2;
+       arrayDos[1][2] = 2;
+
+      
+      for (int i=0; i<arrayDos.length;i++) {
+        
+    
+    for (int j=0; j<arrayDos[1].length;j++) {
+        
+        System.out.println("Estoy en i"+ i + "y en j"+ j);
+        
+              System.out.println(arrayDos[i][j]);
+        
+    }
+}
+}
+}
+
+//Crea un "Vector" del tipo de dato que prefieras, y añádele 5 elementos. Elimina el 2o y 3er elemento y muestra el resultado final.
+import java.util.Vector;
+public class MyClass {
+    public static void main(String[] args) {
+      
+      Vector<Integer> vector= new Vector();
+      vector.add(1);
+      vector.add(1);
+      vector.add(1);
+      vector.add(1);
+      vector.add(1);
+      
+      System.out.println(vector);
+
+      
+      vector.remove(1);
+     System.out.println(vector);
+
+      vector.remove(2);
+
+      System.out.println(vector);
+    }
+}
+
+//Crea un ArrayList de tipo String, con 4 elementos. Cópialo en una LinkedList. Recorre ambos mostrando únicamente el valor de cada elemento.
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+
+public class MyClass {
+    public static void main(String[] args) {
+      ArrayList<String> lista = new ArrayList<String>();
+      lista.add("Ele1");
+      lista.add("Ele2");
+      lista.add("Ele3");
+      lista.add("Ele4");
+      
+     System.out.println(lista);
+     
+     for (int i=0; i<lista.size();i++){
+         System.out.println(lista.get(i));
+         
+         
+     }
+         
+    LinkedList<String> lista2 = new LinkedList<String>(lista);
+    
+         System.out.println(lista2);
+
+       for (int i=0; i<lista2.size();i++){
+         System.out.println(lista2.get(i));
+ 
+    }
+}
+}
+
+//Crea un ArrayList de tipo int, y, utilizando un bucle rellénalo con elementos 1..10. A continuación, con otro bucle, recórrelo y elimina los numeros pares. Por último, vuelve a recorrerlo y muestra el ArrayList final. Si te atreves, puedes hacerlo en menos pasos, siempre y cuando cumplas el primer "for" de relleno.
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+
+public class MyClass {
+    public static void main(String[] args) {
+       ArrayList<Integer> lista = new ArrayList<Integer>();
+       
+     for (int i=1; i<11;i++){
+         lista.add(i);
+         System.out.println(lista);
+     }
+     for (int j=1; j<lista.size(); j++){
+         lista.remove(j);
+     }
+              System.out.println(lista);
+    }
+}
+
+//Crea una función DividePorCero. Esta, debe generar una excepción ("throws") a su llamante del tipo ArithmeticException que será capturada por su llamante (desde "main", por ejemplo). Si se dispara la excepción, mostraremos el mensaje "Esto no puede hacerse". Finalmente, mostraremos en cualquier caso: "Demo de código".
+
+
+public class MyClass {
+    public static void main(String args[]) {
+        
+      double  resultado = divide(20 ,0);
+      System.out.println(resultado);
+
+    }
+    
+    public static double divide(int A, int B){
+        int resultado=0;
+                System.out.println("Demo");
+
+        try {
+                    return A/B;
+        }
+        catch (ArithmeticException e){
+            System.out.println("Mal, no podes usar esos valores");
+        }
+        
+        return resultado;
+    }
+}
+//Utilizando InputStream y PrintStream, crea una función que reciba dos parámetros: "fileIn" y "fileOut". La tarea de la función será realizar la copia del fichero dado en el parámetro "fileIn" al fichero dado en "fileOut".
+import java.io.*;
+
+public class MyClass {
+    public static void copyFile(String fileIn, String fileOut) {
+        try {
+            // Crear InputStream y PrintStream para los archivos
+            InputStream in = new FileInputStream(fileIn);
+            PrintStream out = new PrintStream(fileOut);
+
+            // Copiar contenido del archivo de entrada al de salida
+            int c;
+            while ((c = in.read()) != -1) {
+                out.write(c);
+            }
+
+            // Cerrar InputStream y PrintStream
+            in.close();
+            out.close();
+        } catch (IOException e) {
+            System.out.println("Error al copiar archivo: " + e);
+        }
+    }
+
+    public static void main(String args[]) {
+        // Ejemplo de uso de la función
+        copyFile("fileIn.txt", "fileOut.txt");
+    }
+}
+
+import java.io.*;
+import java.util.*;
+
+public class Biblioteca {
+    // HashMap para almacenar los libros de la biblioteca
+    private static HashMap<String, Libro> libros = new HashMap<>();
+    // ArrayList para almacenar los prestamos de los libros
+    private static ArrayList<Prestamo> prestamos = new ArrayList<>();
+
+    public static void main(String args[]) {
+        // Cargar los libros desde un archivo
+        cargarLibros();
+
+        // Mostrar menú de opciones
+        mostrarMenu();
+    }
+
+    private static void cargarLibros() {
+        try {
+            // Crear InputStream para el archivo de libros
+            InputStream in = new FileInputStream("libros.txt");
+            Scanner sc = new Scanner(in);
+
+            // Leer cada línea del archivo
+            while (sc.hasNextLine()) {
+                String linea = sc.nextLine();
+                // Separar la línea por el caracter ','
+                String[] campos = linea.split(",");
+                // Crear objeto libro
+                Libro libro = new Libro(campos[0], campos[1], campos[2]);
+                // Agregar libro al HashMap
+                libros.put(libro.getIsbn(), libro);
+            }
+            // Cerrar InputStream
+            in.close();
+        } catch (IOException e) {
+            System.out.println("Error al cargar libros: " + e);
+        }
+    }
+    
+    Sorpréndenos creando un programa de tu elección que utilice InputStream, PrintStream, excepciones, un HashMap y un ArrayList, LinkedList o array.
+
+    private static void mostrarMenu() {
+        Scanner sc = new Scanner(System.in);
+        int opcion = 0;
+        do {
+            System.out.println("1. Agregar libro");
+            System.out.println("2. Eliminar libro");
+            System.out.println("3. Buscar libro");
+            System.out.println("4. Realizar préstamo");
+            System.out.println("5. Devolver libro");
+            System.out.println("6. Ver libros prestados");
+            System.out.println("7. Salir");
+            System.out.print("Seleccione una opción: ");
+            try {
+                opcion = Integer.parseInt(sc.nextLine());
+                switch (opcion) {
+                    case 1:
+                        agregarLibro();
+                        break;
+                    case 2:
+                        eliminarLibro();
+                        break;
+                    case 3:
+                        buscarLibro();
+                        break;
+                    case 4:
+                        realizarPrestamo();
+                        break;
+                    case 5:
+                        devolverLibro();
+
+
