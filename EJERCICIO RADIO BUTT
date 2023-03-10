@@ -1,0 +1,66 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNO8Kmc2nDtO1f/qR+PN8x2",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/FLOHRED/HOMEWORK/blob/main/EJERCICIO%20RADIO%20BUTT\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "1OH-zWE3A3TG"
+      },
+      "outputs": [],
+      "source": [
+        "import tkinter as tk\n",
+        "from tkinter import ttk\n",
+        "\n",
+        "root = tk.Tk()\n",
+        "\n",
+        "selected_option = tk.StringVar()\n",
+        "\n",
+        "options = [\"Opción 1\", \"Opción 2\", \"Opción 3\"]\n",
+        "\n",
+        "for option in options:\n",
+        "    ttk.Radiobutton(root, text=option, variable=selected_option, value=option).pack()\n",
+        "\n",
+        "def reset_selection():\n",
+        "    selected_option.set(\"\")\n",
+        "\n",
+        "ttk.Button(root, text=\"Reiniciar\", command=reset_selection).pack()\n",
+        "\n",
+        "selected_label = ttk.Label(root, text=\"No se ha seleccionado ninguna opción\")\n",
+        "selected_label.pack()\n",
+        "\n",
+        "def update_selection(*args):\n",
+        "    selected_label.config(text=\"Ha seleccionado {}\".format(selected_option.get()))\n",
+        "\n",
+        "selected_option.trace_add(\"write\", update_selection)\n",
+        "\n",
+        "root.mainloop()"
+      ]
+    }
+  ]
+}
