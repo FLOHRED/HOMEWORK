@@ -1,0 +1,161 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNZKXxW8P2v4GLMiLY0IA3Z",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/FLOHRED/HOMEWORK/blob/main/Ejercicio%20Bd\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "id": "qxHdXRkTD2OK"
+      },
+      "outputs": [],
+      "source": [
+        "import sqlite3\n",
+        "\n",
+        "conexion = sqlite3.connect(':memory:')"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "conexion.execute('''CREATE TABLE Alumnos\n",
+        "                    (id INTEGER PRIMARY KEY,\n",
+        "                     nombre TEXT,\n",
+        "                     apellido TEXT);''')"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "mok0zR6sD7Ym",
+        "outputId": "0c7e89b6-2502-488f-bf6f-3c2a78cbdf69"
+      },
+      "execution_count": 2,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "<sqlite3.Cursor at 0x7f82ec610ab0>"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 2
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "conexion.execute(\"INSERT INTO Alumnos (nombre, apellido) VALUES (?, ?)\", (\"Juan\", \"García\"))\n",
+        "conexion.execute(\"INSERT INTO Alumnos (nombre, apellido) VALUES (?, ?)\", (\"María\", \"Gómez\"))\n",
+        "conexion.execute(\"INSERT INTO Alumnos (nombre, apellido) VALUES (?, ?)\", (\"Pedro\", \"Pérez\"))\n",
+        "conexion.execute(\"INSERT INTO Alumnos (nombre, apellido) VALUES (?, ?)\", (\"Ana\", \"Sánchez\"))\n",
+        "conexion.execute(\"INSERT INTO Alumnos (nombre, apellido) VALUES (?, ?)\", (\"Carlos\", \"Martínez\"))\n",
+        "conexion.execute(\"INSERT INTO Alumnos (nombre, apellido) VALUES (?, ?)\", (\"Laura\", \"Ruiz\"))\n",
+        "conexion.execute(\"INSERT INTO Alumnos (nombre, apellido) VALUES (?, ?)\", (\"Javier\", \"Fernández\"))\n",
+        "conexion.execute(\"INSERT INTO Alumnos (nombre, apellido) VALUES (?, ?)\", (\"Elena\", \"López\"))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Zq-mt2WOEC-n",
+        "outputId": "d916614f-4eb5-4afd-aa02-7fe1ef60ed21"
+      },
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "<sqlite3.Cursor at 0x7f82ec5d4110>"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 3
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "nombre_buscado = \"Juan\"\n",
+        "resultado = conexion.execute(\"SELECT * FROM Alumnos WHERE nombre=?\", (nombre_buscado,)).fetchone()\n",
+        "if resultado:\n",
+        "    print(f\"Id: {resultado[0]}, Nombre: {resultado[1]}, Apellido: {resultado[2]}\")\n",
+        "else:\n",
+        "    print(f\"No se encontró ningún alumno con el nombre {nombre_buscado}\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Lrke4ivqEEhB",
+        "outputId": "520ee64b-8cf0-43a4-b2ed-f15b009155e5"
+      },
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Id: 1, Nombre: Juan, Apellido: García\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "nombre_buscado =\"Javier\"\n",
+        "resultado = conexion.execute(\"SELECT * FROM Alumnos WHERE nombre=?\", (nombre_buscado,)).fetchone()\n",
+        "if resultado:\n",
+        "    print(f\"Id: {resultado[0]}, Nombre: {resultado[1]}, Apellido: {resultado[2]}\")\n",
+        "else:\n",
+        "    print(f\"No se encontró ningún alumno con el nombre {nombre_buscado}\")\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "aFQq7yimEOvd",
+        "outputId": "60ade81c-b667-4325-b6b1-48d301c4967e"
+      },
+      "execution_count": 9,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Id: 7, Nombre: Javier, Apellido: Fernández\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
